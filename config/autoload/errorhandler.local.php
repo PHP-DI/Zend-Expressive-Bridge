@@ -4,9 +4,9 @@ declare(strict_types = 1);
 use function DI\object;
 
 return array(
-    \Zend\Expressive\Container\WhoopsErrorHandlerFactory::class => object()->lazy(),
-    \Zend\Expressive\Container\WhoopsFactory::class => object()->lazy(),
-    \Zend\Expressive\Container\WhoopsPageHandlerFactory::class => object()->lazy(),
+    \Zend\Expressive\Container\WhoopsErrorHandlerFactory::class => object(),
+    \Zend\Expressive\Container\WhoopsFactory::class => object(),
+    \Zend\Expressive\Container\WhoopsPageHandlerFactory::class => object(),
     \Zend\Expressive\Template\TemplateRendererInterface::class => function (\Interop\Container\ContainerInterface $container) {
         $factory = new \Zend\Expressive\ZendView\ZendViewRendererFactory();
         return $factory($container);

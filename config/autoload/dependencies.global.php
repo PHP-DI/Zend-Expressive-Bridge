@@ -13,8 +13,8 @@ return array(
         return $applicationFactory($container);
     },
     \Zend\Expressive\Router\RouterInterface::class => get(\Zend\Expressive\Router\FastRouteRouter::class),
-    \Zend\Expressive\Router\FastRouteRouter::class => object()->lazy(),
-    \Zend\Expressive\Container\ApplicationFactory::class => object()->lazy(),
+    \Zend\Expressive\Router\FastRouteRouter::class => object(),
+    \Zend\Expressive\Container\ApplicationFactory::class => object(),
     /**
      * injectHelpers() seems to use an incorrect 'default' HelperPluginManager resulting in:
      * Deprecated: Zend\ServiceManager\AbstractPluginManager::__construct now expects a Interop\Container\ContainerInterface instance representing the parent container; please update your code in
@@ -25,7 +25,7 @@ return array(
         $factory = new \Zend\Expressive\ZendView\HelperPluginManagerFactory();
         return $factory($container);
     },
-    \Zend\Expressive\Helper\ServerUrlHelper::class => object()->lazy(),
+    \Zend\Expressive\Helper\ServerUrlHelper::class => object(),
     \Zend\Expressive\Helper\UrlHelper::class => function (\Interop\Container\ContainerInterface $container) {
         $factory = new \Zend\Expressive\Helper\UrlHelperFactory();
         return $factory($container);

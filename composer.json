@@ -1,0 +1,16 @@
+{
+  "name": "php-di/zend-expressive-bridge",
+  "description": "PHP-DI integration in Zend Expressive",
+  "license": "MIT",
+  "type": "library",
+  "require": {
+    "php": "~5.5|~7.0",
+    "php-di/php-di": "^5.2.0",
+    "php-di/invoker": "^1.2.0",
+    "zendframework/zend-expressive": "^1.0",
+    "zendframework/zend-expressive-helpers": "^2.2",
+    "zendframework/zend-expressive-fastroute": "^1.3",
+    "zendframework/zend-expressive-zendviewrenderer": "^1.1",
+    "mtymek/expressive-config-manager": "^0.4.0"
+  }
+}

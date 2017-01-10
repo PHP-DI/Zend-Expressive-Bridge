@@ -8,7 +8,7 @@ The easiest way to use PHP-DI with Zend Expressive, seems to:
 
 Index.php
 
-```
+```php
 
 <?php
 

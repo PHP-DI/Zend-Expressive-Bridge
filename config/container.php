@@ -1,9 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-use DI\ContainerBuilder;
-
-$containerBuilder = new ContainerBuilder();
+//ToDo use PhpFileProvider
+$containerBuilder = new \DI\ContainerBuilder();
 $containerBuilder->addDefinitions(__DIR__ . '/autoload/dependencies.global.php');
 $containerBuilder->addDefinitions(__DIR__ . '/autoload/errorhandler.local.php');
 $containerBuilder->addDefinitions(__DIR__ . '/autoload/middleware-pipeline.global.php');

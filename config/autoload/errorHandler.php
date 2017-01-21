@@ -10,5 +10,4 @@ return array(
     'Zend\Expressive\WhoopsPageHandler' => \DI\factory(\Zend\Expressive\Container\WhoopsPageHandlerFactory::class),
     'Zend\Expressive\FinalHandler' => \DI\factory(\Zend\Expressive\Container\WhoopsErrorHandlerFactory::class),
     //'Zend\Expressive\FinalHandler' => \DI\factory(\Zend\Expressive\Container\TemplatedErrorHandlerFactory::class), //In production
-
 );

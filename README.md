@@ -21,7 +21,7 @@ if (php_sapi_name() === 'cli-server'
 
 require __DIR__ . '/../vendor/autoload.php';
 
-/** @var \Interop\Container\ContainerInterface $container */
+/** @var \DI\Container $container */
 $container = require __DIR__ . '/../vendor/php-di/zend-expressive-bridge/config/container.php';
 
 //Assign configuration to container

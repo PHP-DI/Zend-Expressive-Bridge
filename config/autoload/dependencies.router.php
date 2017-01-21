@@ -13,10 +13,10 @@ if(class_exists('Zend\Expressive\Router\FastRouteRouter')){
         \Zend\Expressive\Router\FastRouteRouter::class => \DI\object(),
     );
 }
-if(class_exists('Zend\Expressive\Router\Zf2Router')){
+if(class_exists('Zend\Expressive\Router\ZendRouter')){
     return array(
-        \Zend\Expressive\Router\RouterInterface::class => \DI\get(\Zend\Expressive\Router\Zf2Router::class),
-        \Zend\Expressive\Router\Zf2Router::class => \DI\object(),
+        \Zend\Expressive\Router\RouterInterface::class => \DI\get(\Zend\Expressive\Router\ZendRouter::class),
+        \Zend\Expressive\Router\ZendRouter::class => \DI\object(),
     );
 }
 throw new RuntimeException('No Router available to use in Dependency Injection Container');

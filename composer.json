@@ -5,14 +5,18 @@
   "type": "library",
   "require": {
     "php": "~5.5|~7.0",
-    "php-di/php-di": "^5.2.0",
-    "php-di/invoker": "^1.2.0",
+    "php-di/php-di": "^5.4.0",
+    "php-di/invoker": "^1.3.0",
     "zendframework/zend-expressive": "^1.0",
-    "zendframework/zend-expressive-helpers": "^2.2",
-    "zendframework/zend-expressive-fastroute": "^1.3",
-    "zendframework/zend-expressive-zendviewrenderer": "^1.1"
+    "zendframework/zend-expressive-helpers": "^2.2"
   },
   "suggest": {
-    "mtymek/expressive-config-manager": "To easily add application specific Dependency Definitions to the ContainerBuilder"
+    "mtymek/expressive-config-manager": "To easily add application specific Dependency Definitions to the ContainerBuilder",
+    "zendframework/zend-expressive-aurarouter": "To route requests using Aura.Router",
+    "zendframework/zend-expressive-fastroute": "To route requests using FastRoute",
+    "zendframework/zend-expressive-zendrouter": "To route requests using zend-mvc Router",
+    "zendframework/zend-expressive-platesrenderer": "To use Plates as templating engine",
+    "zendframework/zend-expressive-twigrenderer": "To use Twig as templating engine",
+    "zendframework/zend-expressive-zendviewrenderer": "To use zend-view PhpRenderer as templating engine"
   }
 }

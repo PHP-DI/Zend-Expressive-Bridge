@@ -40,9 +40,12 @@ $containerBuilder = require __DIR__ . '/../vendor/php-di/zend-expressive-bridge/
 $inProduction = false; //You probably want to use an environment variable for this...
 $containerBuilder->writeProxiesToFile($inProduction, __DIR__ . '/../data/cache'); //You probably want to use caching in production
 
-//Add your own application-specific Dependency Definitions to the Container Builder
+/**
+ * Add your own, application-specific, Dependency Definitions to the Container Builder
+ * @link https://zend-expressive.readthedocs.io/en/latest/features/modular-applications/
+ */
 $pathToDependencyDefinitions = __DIR__ . '/../config/dependencies/{{,*.}global,{,*.}local}.php';
-$phpFileProvider = new \Zend\Expressive\ConfigManager\PhpFileProvider($pathToDependencyDefinitions);
+$phpFileProvider = new \Zend\ConfigAggregator\PhpFileProvider($pathToDependencyDefinitions);
 $dependencyDefinitions = $phpFileProvider();
 foreach ($dependencyDefinitions as $definitions) {
     $containerBuilder->addDefinitions($definitions);

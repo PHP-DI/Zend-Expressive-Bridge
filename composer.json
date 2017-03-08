@@ -11,7 +11,7 @@
     "zendframework/zend-expressive-helpers": "@stable"
   },
   "suggest": {
-    "mtymek/expressive-config-manager": "To easily add application specific Dependency Definitions to the ContainerBuilder",
+    "zendframework/zend-config-aggregator": "To easily add application specific Dependency Definitions to the ContainerBuilder",
     "zendframework/zend-expressive-aurarouter": "To route requests using Aura.Router",
     "zendframework/zend-expressive-fastroute": "To route requests using FastRoute",
     "zendframework/zend-expressive-zendrouter": "To route requests using zend-mvc Router",

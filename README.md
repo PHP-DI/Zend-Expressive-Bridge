@@ -7,7 +7,7 @@ The easiest way to use PHP-DI with Zend Expressive, seems to:
  - use the Dependency Injection Container to fetch the Zend Expressive Application
  - run the Application
 
-## In your ```./public/index.php```
+## In your `./public/index.php`
 
 ```php
 
@@ -30,7 +30,7 @@ $app->run();
 
 ```
 
-## In your ```./config/container.php```
+## In your `./config/container.php`
 
 
 ```php

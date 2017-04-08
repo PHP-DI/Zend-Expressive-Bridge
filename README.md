@@ -6,6 +6,7 @@ The easiest way to use PHP-DI with Zend Expressive, seems to:
  - add your own Dependency Definitions to the Container Builder
  - use the Dependency Injection Container to fetch the Zend Expressive Application
  - run the Application
+   - for example using the PHP internal WebServer: `php -S 0.0.0.0:8080 -t public/`
 
 ## In your `./public/index.php`
 
@@ -13,9 +14,7 @@ The easiest way to use PHP-DI with Zend Expressive, seems to:
 
 <?php
 // Delegate static file requests back to the PHP built-in WebServer
-if (php_sapi_name() === 'cli-server'
-    && is_file(__DIR__ . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))
-) {
+if (PHP_SAPI === 'cli-server' && is_file(__DIR__ . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))) {
     return false;
 }
 
@@ -29,15 +28,15 @@ $app = $container->get(\Zend\Expressive\Application::class);
 $app->run();
 
 ```
-
 ## In your `./config/container.php`
 
 
 ```php
 <?php
-/* @var \DI\ContainerBuilder $containerBuilder */
-$containerBuilder = require __DIR__ . '/../vendor/php-di/zend-expressive-bridge/config/containerBuilder.php';
 $inProduction = false; //You probably want to use an environment variable for this...
+$containerBuilder = new \DI\ExpressiveContainerBuilder($inProduction);
+$containerBuilder->registerXYZRouter(); //Choose your preferred Router
+$containerBuilder->registerXYZRenderer(); //Choose your preferred template Renderer
 $containerBuilder->writeProxiesToFile($inProduction, __DIR__ . '/../data/cache'); //You probably want to use caching in production
 
 /**

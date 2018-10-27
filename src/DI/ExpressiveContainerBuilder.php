@@ -5,12 +5,7 @@ namespace DI;
 
 class ExpressiveContainerBuilder extends ContainerBuilder
 {
-
-    /**
-     * @param bool   $inProduction
-     * @param string $containerClass
-     */
-    public function __construct($inProduction = false, $containerClass = 'DI\Container')
+    public function __construct(bool $inProduction = false, string $containerClass = 'DI\Container')
     {
         parent::__construct($containerClass);
 
@@ -19,63 +14,63 @@ class ExpressiveContainerBuilder extends ContainerBuilder
         $this->registerMiddlewarePipeline();
     }
 
-    private function registerDependencies()
+    private function registerDependencies(): void
     {
         $this->addDefinitions([
             \Interop\Container\ContainerInterface::class => function (\Interop\Container\ContainerInterface $container) {
                 return $container;
             },
             \Zend\Expressive\Application::class => \DI\factory(\Zend\Expressive\Container\ApplicationFactory::class),
-            \Zend\Expressive\Container\ApplicationFactory::class => \DI\object(),
-            \Zend\Expressive\Helper\ServerUrlHelper::class => \DI\object(),
+            \Zend\Expressive\Container\ApplicationFactory::class => \DI\autowire(),
+            \Zend\Expressive\Helper\ServerUrlHelper::class => \DI\autowire(),
             \Zend\Expressive\Helper\UrlHelper::class => \DI\factory(\Zend\Expressive\Helper\UrlHelperFactory::class),
         ]);
     }
 
-    private function registerErrorHandler($inProduction)
+    private function registerErrorHandler(bool $inProduction): void
     {
         $this->addDefinitions([
-            \Zend\Expressive\Container\WhoopsErrorHandlerFactory::class => \DI\object()->lazy(),
-            \Zend\Expressive\Container\WhoopsFactory::class => \DI\object()->lazy(),
-            \Zend\Expressive\Container\WhoopsPageHandlerFactory::class => \DI\object()->lazy(),
+            \Zend\Expressive\Container\WhoopsErrorHandlerFactory::class => \DI\autowire()->lazy(),
+            \Zend\Expressive\Container\WhoopsFactory::class => \DI\autowire()->lazy(),
+            \Zend\Expressive\Container\WhoopsPageHandlerFactory::class => \DI\autowire()->lazy(),
             'Zend\Expressive\Whoops' => \DI\factory(\Zend\Expressive\Container\WhoopsFactory::class),
             'Zend\Expressive\WhoopsPageHandler' => \DI\factory(\Zend\Expressive\Container\WhoopsPageHandlerFactory::class),
             'Zend\Expressive\FinalHandler' => $inProduction ? \DI\factory(\Zend\Expressive\Container\TemplatedErrorHandlerFactory::class) : \DI\factory(\Zend\Expressive\Container\WhoopsErrorHandlerFactory::class),
         ]);
     }
 
-    public function registerAuraRouter()
+    public function registerAuraRouter(): void
     {
         $this->addDefinitions([
             \Zend\Expressive\Router\RouterInterface::class => \DI\get(\Zend\Expressive\Router\AuraRouter::class),
-            \Zend\Expressive\Router\AuraRouter::class => \DI\object(),
+            \Zend\Expressive\Router\AuraRouter::class => \DI\autowire(),
         ]);
     }
 
-    public function registerFastRouteRouter()
+    public function registerFastRouteRouter(): void
     {
         $this->addDefinitions([
             \Zend\Expressive\Router\RouterInterface::class => \DI\get(\Zend\Expressive\Router\FastRouteRouter::class),
-            \Zend\Expressive\Router\FastRouteRouter::class => \DI\object(),
+            \Zend\Expressive\Router\FastRouteRouter::class => \DI\autowire(),
         ]);
     }
 
-    public function registerZendRouter()
+    public function registerZendRouter(): void
     {
         $this->addDefinitions([
             \Zend\Expressive\Router\RouterInterface::class => \DI\get(\Zend\Expressive\Router\ZendRouter::class),
-            \Zend\Expressive\Router\ZendRouter::class => \DI\object(),
+            \Zend\Expressive\Router\ZendRouter::class => \DI\autowire(),
         ]);
     }
 
-    public function registerPlatesRenderer()
+    public function registerPlatesRenderer(): void
     {
         $this->addDefinitions([
             \Zend\Expressive\Template\TemplateRendererInterface::class => \DI\factory(\Zend\Expressive\Plates\PlatesRendererFactory::class),
         ]);
     }
 
-    public function registerTwigRenderer()
+    public function registerTwigRenderer(): void
     {
         $this->addDefinitions([
             \Zend\Expressive\Template\TemplateRendererInterface::class => \DI\factory(\Zend\Expressive\Twig\TwigRendererFactory::class),
@@ -88,7 +83,7 @@ class ExpressiveContainerBuilder extends ContainerBuilder
      *
      * @see \Zend\Expressive\ZendView\ZendViewRendererFactory::injectHelpers()
      */
-    public function registerZendViewRenderer()
+    public function registerZendViewRenderer(): void
     {
         $this->addDefinitions([
             \Zend\Expressive\Template\TemplateRendererInterface::class => \DI\factory(\Zend\Expressive\ZendView\ZendViewRendererFactory::class),
@@ -96,7 +91,7 @@ class ExpressiveContainerBuilder extends ContainerBuilder
         ]);
     }
 
-    private function registerMiddlewarePipeline()
+    private function registerMiddlewarePipeline(): void
     {
         $this->addDefinitions([
             \Zend\Expressive\Helper\ServerUrlMiddleware::class => \DI\factory(\Zend\Expressive\Helper\ServerUrlMiddlewareFactory::class),
